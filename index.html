@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Angkringan Prapatan 16 — Menu Digital</title>
+  <meta name="description" content="Menu digital Angkringan Prapatan 16: pilihan sate, bakaran, makanan, mie, dan minuman. Cari menu dan lihat harga dengan mudah dari HP.">
+  <meta name="theme-color" content="#3b2416">
+
+  <!-- Open Graph (ganti URL gambar setelah website punya alamat permanen, lihat README) -->
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="id_ID">
+  <meta property="og:title" content="Angkringan Prapatan 16 — Menu Digital">
+  <meta property="og:description" content="Jelajahi pilihan sate, bakaran, makanan, mie, dan minuman dari Angkringan Prapatan 16.">
+  <meta property="og:image" content="assets hero-gerobak.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- Favicon placeholder: ganti assets/favicon.png dengan logo asli -->
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <a class="skip-link" href="#menu">Langsung ke menu</a>
+
+  <div class="draft-notice" id="draftNotice" hidden>
+    Mode pratinjau: harga masih data awal dan belum dikonfirmasi pemilik.
+  </div>
+
+  <header class="site-header" id="top">
+    <div class="container header-inner">
+      <a class="brand" href="#top" aria-label="Angkringan Prapatan 16, ke atas halaman">
+        <span class="brand-mark" aria-hidden="true">16</span>
+        <span class="brand-text">Angkringan <strong>Prapatan 16</strong></span>
+      </a>
+
+      <nav class="main-nav" id="mainNav" aria-label="Navigasi utama">
+        <ul>
+          <li><a href="#menu">Menu</a></li>
+          <li><a href="#tentang">Tentang</a></li>
+          <li><a href="#lokasi">Lokasi</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <a class="btn btn-small btn-primary" href="#menu">Lihat Menu</a>
+        <button class="nav-toggle" id="navToggle" type="button" aria-expanded="false" aria-controls="mainNav">
+          <span class="visually-hidden">Buka navigasi</span>
+          <span class="nav-toggle-bars" aria-hidden="true"></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero" aria-labelledby="heroTitle">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <p class="eyebrow">Modern street food Indonesia</p>
+          <h1 id="heroTitle">Teman Nongkrong, <span>Pilihan Banyak</span></h1>
+          <p class="hero-lead">Jelajahi pilihan sate, bakaran, makanan, mie, dan minuman dari Angkringan Prapatan 16.</p>
+          <div class="hero-buttons">
+            <a class="btn btn-primary" href="#menu">Jelajahi Menu</a>
+            <a class="btn btn-ghost js-wa" href="#kontak" data-wa-type="general">Hubungi Kami</a>
+          </div>
+          <ul class="hero-facts" id="heroFacts" aria-label="Ringkasan menu"></ul>
+        </div>
+
+        <figure class="hero-figure">
+          <img src="assets hero-gerobak.jpg" width="950" height="780" fetchpriority="high"
+               alt="Gerobak kayu Angkringan Prapatan 16 dengan papan nama, bangku panjang, dan lampu hangat di malam hari">
+          <figcaption>Foto asli Angkringan Prapatan 16</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- KATALOG MENU -->
+    <section class="section" id="menu" aria-labelledby="menuTitle">
+      <div class="container">
+        <header class="section-head">
+          <p class="eyebrow">Daftar menu</p>
+          <h2 id="menuTitle">Pilih Menu Favoritmu</h2>
+          <p class="section-sub">Cari berdasarkan nama atau pilih kategori. Harga dalam Rupiah.</p>
+        </header>
+
+        <div class="catalog-tools">
+          <div class="search-box">
+            <label class="visually-hidden" for="searchInput">Cari menu</label>
+            <svg class="search-icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="M20 20l-3.5-3.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            <input id="searchInput" type="search" placeholder="Cari menu, mis. sate, mie, es" autocomplete="off" enterkeyhint="search">
+            <button class="search-clear" id="searchClear" type="button" hidden aria-label="Hapus pencarian">&times;</button>
+          </div>
+
+          <div class="chips" id="categoryChips" role="group" aria-label="Filter kategori"></div>
+        </div>
+
+        <p class="result-count" id="resultCount" role="status" aria-live="polite"></p>
+
+        <div class="menu-grid" id="menuGrid"></div>
+
+        <div class="empty-state" id="emptyState" hidden>
+          <div class="empty-icon" aria-hidden="true">🔍</div>
+          <h3>Menu tidak ditemukan</h3>
+          <p>Coba kata kunci lain atau tampilkan semua menu.</p>
+          <button class="btn btn-ghost" id="resetFilters" type="button">Tampilkan semua menu</button>
+        </div>
+
+        <aside class="menu-note">
+          <p><strong>Catatan:</strong> Tombol WhatsApp hanya meneruskan pertanyaan ke penjual. Ketersediaan dan harga akhir dikonfirmasi langsung oleh Angkringan Prapatan 16.</p>
+          <button class="link-btn" id="openMenuPhoto" type="button">Lihat foto daftar menu di tempat</button>
+        </aside>
+      </div>
+    </section>
+
+    <!-- TENTANG -->
+    <section class="section section-dark" id="tentang" aria-labelledby="aboutTitle">
+      <div class="container about-grid">
+        <figure class="about-figure">
+          <img src="assets suasana-angkringan.jpg" width="1000" height="750" loading="lazy"
+               alt="Suasana Angkringan Prapatan 16 pada malam hari: gerobak, bangku kayu, dan pelanggan menikmati hidangan">
+        </figure>
+        <div class="about-copy">
+          <p class="eyebrow eyebrow-light">Tentang kami</p>
+          <h2 id="aboutTitle">Angkringan Prapatan 16</h2>
+          <p id="aboutText">Angkringan Prapatan 16 menyediakan pilihan sate, bakaran, makanan, mie, dan minuman untuk menemani waktu santai Anda.</p>
+          <a class="btn btn-primary" href="#menu">Lihat semua menu</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- LOKASI & KONTAK -->
+    <section class="section" id="lokasi" aria-labelledby="locTitle">
+      <div class="container">
+        <header class="section-head">
+          <p class="eyebrow">Kunjungi kami</p>
+          <h2 id="locTitle">Lokasi &amp; Jam Operasional</h2>
+        </header>
+
+        <div class="info-grid" id="kontak">
+          <article class="info-card">
+            <h3>Alamat</h3>
+            <p id="addressText" class="info-text"></p>
+          </article>
+          <article class="info-card">
+            <h3>Jam operasional</h3>
+            <p id="hoursText" class="info-text"></p>
+          </article>
+          <article class="info-card">
+            <h3>Kontak</h3>
+            <p class="info-text">Tanya menu atau ketersediaan lewat WhatsApp.</p>
+          </article>
+        </div>
+
+        <div class="info-buttons">
+          <a class="btn btn-primary js-wa" href="#kontak" data-wa-type="general">Chat via WhatsApp</a>
+          <a class="btn btn-ghost" id="directionsBtn" href="#lokasi" target="_blank" rel="noopener" hidden>Petunjuk Arah di Google Maps</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- QR CODE -->
+    <section class="section section-soft" id="qr" aria-labelledby="qrTitle">
+      <div class="container qr-grid">
+        <div>
+          <p class="eyebrow">Untuk dipasang di meja</p>
+          <h2 id="qrTitle">Buka Menu dari QR Code</h2>
+          <p id="qrText" class="section-sub"></p>
+        </div>
+        <div class="qr-box" id="qrBox"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div>
+        <p class="footer-brand">Angkringan Prapatan 16</p>
+        <p class="footer-small">Sate, bakaran, makanan, mie, dan minuman.</p>
+      </div>
+      <nav aria-label="Navigasi footer">
+        <ul class="footer-links">
+          <li><a href="#menu">Menu</a></li>
+          <li><a href="#lokasi">Lokasi</a></li>
+          <li><a class="js-wa" href="#kontak" data-wa-type="general">WhatsApp</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="container footer-bottom">
+      <p>&copy; <span id="year">2026</span> Angkringan Prapatan 16. Semua hak dilindungi.</p>
+    </div>
+  </footer>
+
+  <!-- Dialog foto menu -->
+  <dialog class="photo-dialog" id="menuPhotoDialog" aria-label="Foto daftar menu di tempat">
+    <form method="dialog"><button class="dialog-close" aria-label="Tutup">&times;</button></form>
+    <img src="assets menu-asli.jpg" width="1050" height="1400" loading="lazy"
+         alt="Foto daftar menu cetak Angkringan Prapatan 16 berisi harga sate, makanan, mie, dan minuman">
+  </dialog>
+
+  <!-- Notifikasi singkat -->
+  <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
